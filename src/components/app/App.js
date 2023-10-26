@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense } from "react";
 
-import Header from "../header/Hearder.js";
+
+import Header from "../header/Hearder.js"
 
 import './App.scss';
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
 
   const fetchTabs = () => {
-    fetch('https://taskcms-90365-default-rtdb.firebaseio.com/tabs')
+    fetch('https://taskcms-90365-default-rtdb.firebaseio.com/tabs.json')
       .then((response) => {
         return response.json();
       })
