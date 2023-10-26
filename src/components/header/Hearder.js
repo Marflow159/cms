@@ -27,7 +27,6 @@ const Header = ({ tabs }) => {
     return (
         <header>
             <nav>
-                <NavLink to='/'>home</NavLink>
                 {elems}
             </nav>
         </header>

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Redirect, Navigate } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense } from "react";
 
 import DummyTable from "../tabs/dummyTable.js";
@@ -6,10 +6,10 @@ import Header from "../header/Hearder.js";
 
 import './App.scss';
 function App() {
-
   const [tabs, setTabs] = useState()
   const [loadingStatus, setLoadingStatus] = useState('loading')
   const [elements, setElements] = useState()
+  const [mainUrl, setMainUrl] = useState()
 
 
   const fetchTabs = () => {
@@ -30,21 +30,24 @@ function App() {
 
   useEffect(() => {
     fetchTabs()
-
   }, [])
 
   const createRoute = (data) => {
-    console.log(data);
     setElements(data.map((tab, i) => {
-      const { id, path } = tab
+      const { id, order, path } = tab
       const MyComponent = lazy(() => import(`../${path}`), [])
-      return (
-        <Route path={`/${id}`} element={<MyComponent />} />
-      )
+      if (order === 0) {
+        setMainUrl(id)
+        return (
+          <Route path={`/${id}`} element={<MyComponent />} />
+        )
+      } else {
+        return (
+          <Route path={`/${id}`} element={<MyComponent />} />
+        )
+      }
     }))
-    console.log(elements);
   }
-
 
   return (
     <Router>
@@ -52,6 +55,7 @@ function App() {
         <Header tabs={loadingStatus === "idle" ? tabs : null} />
         <Suspense fallback={<div>loading</div>}>
           <Routes>
+            <Route path='/' element={<Navigate to={mainUrl !== undefined ? mainUrl : null} />} />
             {elements === undefined ? 'loading' : elements}
           </Routes>
         </Suspense>
