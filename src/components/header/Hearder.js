@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 
+import '../styles/index.scss'
 
 const Header = ({ tabs }) => {
     let elems

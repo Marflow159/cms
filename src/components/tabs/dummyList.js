@@ -1,11 +1,15 @@
-const DummyList = () =>(
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-    </ul>
+const DummyList = () => (
+    <div>
+        <h2>Class</h2>
+        <ul>
+            <li>Ivan</li>
+            <li>Nastya</li>
+            <li>Oleg</li>
+            <li>Petro</li>
+            <li>Olya</li>
+        </ul>
+    </div>
+
 )
 
 export default DummyList

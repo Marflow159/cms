@@ -1,7 +1,6 @@
-import { BrowserRouter as Router, Route, Routes, Redirect, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense } from "react";
 
-import DummyTable from "../tabs/dummyTable.js";
 import Header from "../header/Hearder.js";
 
 import './App.scss';
@@ -13,11 +12,12 @@ function App() {
 
 
   const fetchTabs = () => {
-    fetch('http://localhost:3001/tabs')
+    fetch('https://taskcms-90365-default-rtdb.firebaseio.com/tabs')
       .then((response) => {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         setTabs(data);
         setLoadingStatus('idle')
         createRoute(data)

@@ -1,0 +1,24 @@
+header{
+    nav{
+        display: flex;
+        gap: 30px;
+        a{
+            text-decoration: none;
+            color: black;
+            border: 1px solid black;
+            p{
+                margin: 0;
+                padding: 10px;
+            }
+        }
+        a:hover{
+            color: red;
+            border-color: red;
+        }
+        
+    }
+}
+
+table{
+    border: solid 1px black
+}
